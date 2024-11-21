@@ -1,4 +1,4 @@
-= VERSE RIPPER
+# VERSE RIPPER
 
 This will extract all the verses from a txt document into a nice list. Verse formatting is assumed to be from BSF study questions.  
 ref:  https://www.bsfinternational.org/
