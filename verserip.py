@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 '''
-VERSE RIPPER
+VERSE RIPPER  1.7
 ---------------------------
 This will extract all the verses from a txt document into a nice list.
 Verse formatting is assumed to be from BSF study questions.  
@@ -25,18 +25,17 @@ args = parser.parse_args()
 with open(args.filename, 'r') as f:
     # Process the file here
     orgtxt = f.read()
-# a list of tuples is returned
-wholeverse = r"((\d*)\s+([A-Z]\w*\b)\s+(\d+[:]\d+[-]?\d?\d?\d?))|((?:((\d*)\s+)?(?:[A-Z]\w*\b)\s+)?(\d+[:]\d+[-]?\d?\d?\d?))"
+# a list of tuples is returned       
+wholeverse = r"((\d*)\s+([A-Z]\w*\b)\s+(\d+[:]\d+[-–—]?\d?\d?\d?([:]\d+)?))|((?:((\d*)\s+)?(?:[A-Z]\w*\b)\s+)?(\d+[:]\d+[-–—]?\d?\d?\d?))"
 matches = re.findall(wholeverse, orgtxt)
-# print(matches)
+print(matches)
 print("--------------------------------------------------")
 
 # Account for subsequent verses in the same book
 for book in matches:
     if book[2] != '':     # Yes book is specified
-        prebook = book[1]+" "+book[2]
-        lookup = (book[1]+" "+book[2]+" "+book[3])
+        prebook = book[1]+" "+book[2]   # Book number(opt) + Book name
+        lookup = (book[1]+" "+book[2]+" "+book[3]) # number, book, verse number
     if book[2] == '':     # assume use of the same book specified previously
-        lookup = (prebook+" "+book[4])
+        lookup = (prebook+" "+book[5])  # number, book, standalone verse number
     print(lookup.lstrip())
-
