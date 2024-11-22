@@ -28,7 +28,7 @@ with open(args.filename, 'r') as f:
 # a list of tuples is returned       
 wholeverse = r"((\d*)\s+([A-Z]\w*\b)\s+(\d+[:]\d+[-–—]?\d?\d?\d?([:]\d+)?))|((?:((\d*)\s+)?(?:[A-Z]\w*\b)\s+)?(\d+[:]\d+[-–—]?\d?\d?\d?))"
 matches = re.findall(wholeverse, orgtxt)
-print(matches)
+# print(matches)
 print("--------------------------------------------------")
 
 # Account for subsequent verses in the same book
